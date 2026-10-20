@@ -1,4 +1,4 @@
-IMAGE := p4-tutorial
+IMAGE := p4env-docker:v0.1
 CONTAINER := p4-tutorial
 WORKDIR := /home/p4/tutorials
 

@@ -26,6 +26,7 @@ RUN apt install -y vim git build-essential \
 	pkg-config python3 python3-pip python3-venv \
     xcscope-el libprotobuf-dev protobuf-compiler \
     protobuf-compiler-grpc libgrpc-dev libgrpc++-dev \
+    libthrift-dev \
     libssl-dev libreadline-dev valgrind libtool-bin \
     libboost-dev libboost-system-dev libboost-thread-dev \
     libboost-iostreams-dev libboost-graph-dev \
