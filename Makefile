@@ -3,7 +3,7 @@ CONTAINER := p4-tutorial
 WORKDIR := /home/p4/tutorials
 
 build:
-	docker build -t $(IMAGE) .
+	docker build --network=host -t $(IMAGE) .
 
 run:
 	docker run \
