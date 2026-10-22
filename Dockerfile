@@ -20,10 +20,10 @@ RUN useradd -r -g sudo -m -s /bin/bash p4 \
 
 WORKDIR /home/p4/src
 
-RUN apt install -y vim git build-essential libgmp-dev \
+RUN apt install -y vim git gh build-essential libgmp-dev \
     ca-certificates iproute2 libpcap-dev libjsoncpp-dev \
     tcpdump wget autoconf automake libtool curl cmake unzip \
-	pkg-config python3 python3-pip python3-venv \
+	pkg-config python3 python3-pip python3-venv libnanomsg-dev \
     xcscope-el libprotobuf-dev protobuf-compiler \
     protobuf-compiler-grpc libgrpc-dev libgrpc++-dev \
     libthrift-dev libboost-program-options-dev libboost-test-dev libevent-dev \
@@ -84,7 +84,6 @@ RUN cd p4c \
     && cmake -B build \
     && cmake --build build --target install --parallel $(nproc)
 
-RUN apt install -y gh
-
 USER p4
 WORKDIR /home/p4/
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh

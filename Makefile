@@ -7,7 +7,7 @@ build:
 
 run:
 	docker run \
-	--name $(CONTAINER) --user p4 \
+	--name $(CONTAINER) --user p4 --cpuset-cpus="24,25,26" --memory 4g \
 	-e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v `pwd`/longdev:$(WORKDIR) -w $(WORKDIR) \
 	--privileged --network=host \
