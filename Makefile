@@ -1,5 +1,5 @@
 IMAGE := p4env-docker:v0.1
-CONTAINER := p4-tutorial
+CONTAINER := p4-research-env
 WORKDIR := /home/p4/tutorials
 
 build:
@@ -15,3 +15,9 @@ run:
 
 join:
 	docker exec -it $(CONTAINER) bash
+
+delcont:
+	docker rm -f $(CONTAINER) || true
+
+delimg:
+	docker rmi -f $(IMAGE) || true

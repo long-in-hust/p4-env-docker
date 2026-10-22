@@ -75,7 +75,7 @@ RUN cd behavioral-model \
     && cmake --build build --parallel $(nproc) \
     && cmake --install build
 
-RUN https://github.com/p4lang/p4c
+RUN git clone https://github.com/p4lang/p4c
 
 RUN cd p4c \
     && git checkout ${INSTALL_P4C_SOURCE_VERSION} \
@@ -83,3 +83,6 @@ RUN cd p4c \
     && mkdir build \
     && cmake -B build \
     && cmake --build build --target install --parallel $(nproc)
+
+USER p4
+WORKDIR /home/p4/
