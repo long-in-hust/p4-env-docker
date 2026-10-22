@@ -84,5 +84,7 @@ RUN cd p4c \
     && cmake -B build \
     && cmake --build build --target install --parallel $(nproc)
 
+RUN apt install -y gh
+
 USER p4
 WORKDIR /home/p4/
