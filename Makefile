@@ -1,6 +1,6 @@
 IMAGE := p4env-docker:v0.1
 CONTAINER := p4-research-env
-WORKDIR := /home/p4/tutorials
+WORKDIR := /home/p4/longdev
 
 build:
 	docker build --network=host -t $(IMAGE) .
@@ -9,7 +9,7 @@ run:
 	docker run \
 	--name $(CONTAINER) \
 	-e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
-	-v `pwd`/tutorials:$(WORKDIR) -w $(WORKDIR) \
+	-v `pwd`/longdev:$(WORKDIR) -w $(WORKDIR) \
 	--privileged --network=host \
 	-it --rm $(IMAGE) bash
 
