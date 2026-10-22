@@ -7,7 +7,7 @@ build:
 
 run:
 	docker run \
-	--name $(CONTAINER) \
+	--name $(CONTAINER) --user p4 \
 	-e DISPLAY=host.docker.internal:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v `pwd`/longdev:$(WORKDIR) -w $(WORKDIR) \
 	--privileged --network=host \
