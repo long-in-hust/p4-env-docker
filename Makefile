@@ -16,6 +16,9 @@ run:
 join:
 	docker exec -it $(CONTAINER) bash
 
+stop:
+	docker stop $(CONTAINER) || true
+
 delcont:
 	docker rm -f $(CONTAINER) || true
 
