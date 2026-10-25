@@ -71,7 +71,9 @@ RUN cd behavioral-model \
     && git log -n 1 \
     && ./autogen.sh \
     && ./configure \
-    && cmake -S . -B build -DWITH_PI=ON -DENABLE_PACKET_TRACE=ON -DENABLE_LOGGING_MACROS=OFF -DENABLE_ELOGGER=OFF \
+    && mkdir build \
+    && cd build \
+    && cmake -S . -B build -DWITH_PI=ON -DENABLE_PACKET_TRACE=OFF -DENABLE_LOGGING_MACROS=OFF -DENABLE_ELOGGER=OFF \
     && cmake --build build --parallel $(nproc) \
     && cmake --install build
 
