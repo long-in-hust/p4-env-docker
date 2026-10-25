@@ -73,7 +73,7 @@ RUN cd behavioral-model \
     && ./configure \
     && mkdir build \
     && cd build \
-    && cmake -S . -B build -DWITH_PI=ON -DENABLE_PACKET_TRACE=OFF -DENABLE_LOGGING_MACROS=OFF -DENABLE_ELOGGER=OFF \
+    && cmake -S .. -B build -DWITH_PI=ON -DENABLE_PACKET_TRACE=OFF -DENABLE_LOGGING_MACROS=OFF -DENABLE_ELOGGER=OFF \
     && cmake --build build --parallel $(nproc) \
     && cmake --install build
 
