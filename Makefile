@@ -3,7 +3,7 @@ CONTAINER := p4-research-env
 WORKDIR := /home/p4/longdev
 
 build:
-	docker build --network=host -t $(IMAGE) .
+	docker build --no-cache --network=host -t $(IMAGE) .
 
 run:
 	docker run \

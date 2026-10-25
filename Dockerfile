@@ -20,7 +20,7 @@ RUN useradd -r -g sudo -m -s /bin/bash p4 \
 
 WORKDIR /home/p4/src
 
-RUN apt install -y vim git gh build-essential libgmp-dev \
+RUN apt install -y vim git gh build-essential libgmp-dev ccache \
     ca-certificates iproute2 libpcap-dev libjsoncpp-dev \
     tcpdump wget autoconf automake libtool curl cmake unzip \
 	pkg-config python3 python3-pip python3-venv libnanomsg-dev \
@@ -69,20 +69,19 @@ RUN git clone https://github.com/long-in-hust/behavioral-model.git
 RUN cd behavioral-model \
     && git checkout ${INSTALL_BEHAVIORAL_MODEL_SOURCE_VERSION} \
     && git log -n 1 \
-    && ./autogen.sh \
-    && ./configure \
-    && mkdir build \
+    && mkdir -p build \
     && cd build \
-    && cmake -S .. -B build -DWITH_PI=ON -DENABLE_PACKET_TRACE=OFF -DENABLE_LOGGING_MACROS=OFF -DENABLE_ELOGGER=OFF \
-    && cmake --build build --parallel $(nproc) \
-    && cmake --install build
+    && cmake -DWITH_PI=ON -DENABLE_LOGGING_MACROS=OFF -DENABLE_ELOGGER=OFF .. \
+    && cd .. \
+    && make -j$(nproc) \
+    && make install
 
 RUN git clone https://github.com/p4lang/p4c
 
 RUN cd p4c \
     && git checkout ${INSTALL_P4C_SOURCE_VERSION} \
     && git log -n 1 \
-    && mkdir build \
+    && mkdir -p build \
     && cmake -B build \
     && cmake --build build --target install --parallel $(nproc)
 
